@@ -16,7 +16,7 @@ public class RagService
     public async Task<string> AskAsync(string question, string fileName)
     {
         var extract = await _documentSearch.SearchAsync(question, fileName);
-        var response = await _responseGenerator.GenerateAsync(extract);
+        var response = await _responseGenerator.GenerateAsync(extract, question);
         return response;
     }
 }

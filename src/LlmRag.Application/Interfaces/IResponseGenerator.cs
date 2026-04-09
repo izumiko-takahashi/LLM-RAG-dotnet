@@ -2,5 +2,5 @@
 
 public interface IResponseGenerator
 {
-    Task<string> GenerateAsync(string extract);
+    Task<string> GenerateAsync(string extract, string question);
 }

@@ -7,7 +7,11 @@ var builder = WebApplication.CreateBuilder(args);
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 builder.Services.AddScoped<RagService>();
-builder.Services.AddInfrastructure();
+//builder.Services.AddInfrastructure();
+var openAiApiKey = builder.Configuration["OpenAI:ApiKey"]
+    ?? throw new InvalidOperationException("Falta OpenAI:ApiKey en la configuración");
+
+builder.Services.AddInfrastructure(openAiApiKey);
 builder.Services.AddControllers();
 
 var app = builder.Build();
